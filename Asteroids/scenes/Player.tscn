@@ -1,0 +1,58 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://scenes/Balle.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Exhaust_Frame_01_png_processed.png" type="Texture" id=3]
+[ext_resource path="res://assets/Exhaust_Frame_02_png_processed.png" type="Texture" id=4]
+[ext_resource path="res://assets/Exhaust_Frame_03_png_processed.png" type="Texture" id=5]
+[ext_resource path="res://assets/Exhaust_Frame_04_png_processed.png" type="Texture" id=6]
+[ext_resource path="res://assets/Exhaust_Frame_05_png_processed.png" type="Texture" id=7]
+[ext_resource path="res://assets/Exhaust_Frame_06_png_processed.png" type="Texture" id=8]
+[ext_resource path="res://assets/PlayerBlue_Frame_01_png_processed.png" type="Texture" id=9]
+[ext_resource path="res://scenes/WrapAround.tscn" type="PackedScene" id=10]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [  ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "boost",
+"speed": 5.0
+} ]
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource( 1 )
+balle = ExtResource( 2 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( -29.129, 3.1436 )
+rotation = 1.5708
+frames = SubResource( 1 )
+playing = true
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( -28.821, -3.13887 )
+rotation = 1.5708
+frames = SubResource( 1 )
+playing = true
+
+[node name="Sprite" type="Sprite" parent="."]
+rotation = 1.5708
+texture = ExtResource( 9 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2( -11, 0 )
+rotation = 1.5708
+scale = Vector2( 1.07812, 1.06836 )
+polygon = PoolVector2Array( -2.09815e-006, -48, -11.4681, -20.9348, -26.8986, 0.936113, -24.1159, 9.36023, -16, 16, 16, 16, 25.0435, 6.93225, 26.8986, 0.380142, 11.0385, -20.9349 )
+
+[node name="Canon" type="Position2D" parent="."]
+position = Vector2( 38, 0 )
+
+[node name="WrapAround" parent="." instance=ExtResource( 10 )]

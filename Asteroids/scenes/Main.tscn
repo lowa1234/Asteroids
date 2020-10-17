@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://scenes/Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scenes/UI.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scripts/Level.gd" type="Script" id=4]
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 514.221, 175.488 )
+
+[node name="Asteroid" parent="." instance=ExtResource( 2 )]
+position = Vector2( 363.707, 239.162 )
+
+[node name="UI" parent="." instance=ExtResource( 3 )]
+
+[node name="Level" type="Node2D" parent="."]
+script = ExtResource( 4 )
